@@ -1,9 +1,9 @@
 export interface RootObject {
-  data: Datum[];
+  data: Products[];
   meta: Meta;
 }
 
-export interface Datum {
+export interface Products {
   description: string;
   discountedPrice: number;
   id: string;

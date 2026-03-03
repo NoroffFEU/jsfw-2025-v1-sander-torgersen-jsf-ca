@@ -1,10 +1,20 @@
-export default function Home() {
+import ProductList from "@/components/ProductList";
+import { fetchProducts } from "@/lib/services/api";
+import { Products } from "@/lib/types/types";
+
+export default async function Home() {
+  let products: Products[] = [];
+  try {
+    products = await fetchProducts();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Welcome to the Online Shop!</h1>
-      <p className="mt-4 text-lg text-gray-600">
-        Explore our wide range of products and enjoy shopping with us.
-      </p>
+      <div>
+        <ProductList products={products} />
+      </div>
     </main>
   );
 }
