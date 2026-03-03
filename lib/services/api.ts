@@ -2,7 +2,7 @@ import { Products, RootObject } from "../types/types";
 
 export async function fetchProducts(): Promise<Products[]> {
   const response = await fetch(
-    `${process.env.BASE_URL}${process.env.ALL_PRODUCTS_ENDPOINT}`,
+    `${process.env.API_BASE_URL}${process.env.ALL_PRODUCTS_ENDPOINT}`,
   );
 
   if (!response.ok) {
@@ -16,7 +16,7 @@ export async function fetchProducts(): Promise<Products[]> {
 
 export async function fetchProductById(id: string): Promise<Products> {
   const response = await fetch(
-    `${process.env.BASE_URL}${process.env.ALL_PRODUCTS_ENDPOINT}/${id}`,
+    `${process.env.API_BASE_URL}${process.env.ALL_PRODUCTS_ENDPOINT}/${id}`,
   );
 
   if (!response.ok) {
