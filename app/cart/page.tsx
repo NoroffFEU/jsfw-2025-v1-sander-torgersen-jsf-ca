@@ -13,7 +13,7 @@ export default function CartPage() {
 
   const handleCheckout = () => {
     clearItemFromCart();
-    router.push("/checkout");
+    // router.push("/checkout");
   };
 
   if (items.length === 0) {
