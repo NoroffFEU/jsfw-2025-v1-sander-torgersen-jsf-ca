@@ -9,6 +9,14 @@ export default function Header() {
         <Link href="/" className="text-xl font-bold tracking-tight">
           Online Shop
         </Link>
+        <nav className="flex items-center gap-6">
+          <Link href="/contact" className="text-xl font-bold tracking-tight">
+            Contact
+          </Link>
+          <Link href="/cart" className="text-xl font-bold tracking-tight">
+            Cart
+          </Link>
+        </nav>
       </div>
     </header>
   );

@@ -7,22 +7,25 @@ export interface CartItem {
   quantity: number;
 }
 
-interface CartState {
+interface State {
   items: CartItem[];
 }
 
-interface CartActions {
-  addToCart: (product: Products) => void;
-  removeFromCart: (productId: string) => void;
-  clearCart: () => void;
+interface Actions {
+  addItemToCart: (product: Products) => void;
+  removeItemFromCart: (productId: string) => void;
+  updateItemQuantity: (productId: string, quantity: number) => void;
+  clearItemFromCart: () => void;
+  getTotalItems: () => number;
+  getTotalPrice: () => number;
 }
 
-export const useCartStore = create<CartState & CartActions>()(
+export const useCartStore = create<State & Actions>()(
   persist(
     (set, get) => ({
       items: [],
 
-      addToCart: (product: Products) => {
+      addItemToCart: (product: Products) => {
         const { items } = get();
         const existingItem = items.find(
           (item) => item.product.id === product.id,
@@ -43,15 +46,41 @@ export const useCartStore = create<CartState & CartActions>()(
         }
       },
 
-      removeFromCart: (productId: string) => {
+      removeItemFromCart: (productId: string) => {
         const { items } = get();
         set({
           items: items.filter((item) => item.product.id !== productId),
         });
       },
 
-      clearCart: () => {
+      clearItemFromCart: () => {
         set({ items: [] });
+      },
+
+      updateItemQuantity: (productId: string, quantity: number) => {
+        if (quantity <= 0) {
+          get().removeItemFromCart(productId);
+          return;
+        }
+        const { items } = get();
+        set({
+          items: items.map((item) =>
+            item.product.id === productId ? { ...item, quantity } : item,
+          ),
+        });
+      },
+
+      getTotalItems: () => {
+        const { items } = get();
+        return items.reduce((total, item) => total + item.quantity, 0);
+      },
+
+      getTotalPrice: () => {
+        const { items } = get();
+        return items.reduce(
+          (total, item) => total + item.product.discountedPrice * item.quantity,
+          0,
+        );
       },
     }),
     {

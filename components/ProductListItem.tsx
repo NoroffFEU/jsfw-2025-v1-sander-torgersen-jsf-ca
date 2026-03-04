@@ -14,7 +14,7 @@ interface ProductListItemProps {
 }
 
 export default function ProductListItem({ product }: ProductListItemProps) {
-  const addItemToCart = useCartStore((state) => state.addToCart);
+  const addItem = useCartStore((state) => state.addItemToCart);
 
   const hasDiscount = product.discountedPrice < product.price;
   const discountPercentage = hasDiscount
@@ -26,7 +26,7 @@ export default function ProductListItem({ product }: ProductListItemProps) {
   const handleAddToCart = (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    addItemToCart(product);
+    addItem(product);
     toast.success(`${product.title} added to cart!`);
   };
   return (
