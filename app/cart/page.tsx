@@ -1,8 +1,66 @@
+"use client";
+
+import CartItem from "@/components/CartItem";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { useCartStore } from "@/lib/hooks/useCartStore";
+import Link from "next/link";
+import { useRouter } from "next/compat/router";
+
 export default function CartPage() {
+  const { items, clearItemFromCart, getTotalPrice } = useCartStore();
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    clearItemFromCart();
+    // router.push("/checkout");
+  };
+
+  if (items.length === 0) {
+    return (
+      <div className="flex flex-col mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8 text-center">
+        <h1 className="flex pt-4 text-2xl font-bold justify-center">
+          Your cart is empty
+        </h1>
+
+        <p className="pt-2 text-muted-foreground">
+          Please add some products to your cart before proceeding to checkout.
+          <br />
+          Browse our products and find something you like!
+        </p>
+
+        <div className="flex justify-center pt-6">
+          <Button asChild>
+            <Link href="/">Continue shopping</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>Cart Page</h1>
-      <p>This is the cart page where users can view their selected products.</p>
+    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
+      <h1 className="mb-8 text-2xl font-bold">Shopping Cart</h1>
+
+      <div className="space-y-4">
+        {items.map((item) => (
+          <CartItem key={item.product.id} item={item} />
+        ))}
+        <Separator className="my-6" />
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-muted-foreground">Total</p>
+            <p className="text-2xl font-bold">${getTotalPrice().toFixed(2)}</p>
+          </div>
+
+          <Button
+            className="cursor-pointer p-5 font-bold"
+            onClick={handleCheckout}
+          >
+            Checkout
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
