@@ -5,15 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/lib/hooks/useCartStore";
 import Link from "next/link";
-import { useRouter } from "next/compat/router";
+// import { useRouter } from "next/compat/router";
 
 export default function CartPage() {
   const { items, clearItemFromCart, getTotalPrice } = useCartStore();
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleCheckout = () => {
-    clearItemFromCart();
+    // clearItemFromCart();
     // router.push("/checkout");
+    // console.log("Proceeding to checkout...", router);
   };
 
   if (items.length === 0) {
