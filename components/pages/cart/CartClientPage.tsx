@@ -1,6 +1,6 @@
 "use client";
 
-import CartItem from "@/components/CartItem";
+import CartItem from "@/components/pages/cart/CartItem";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/lib/hooks/useCartStore";

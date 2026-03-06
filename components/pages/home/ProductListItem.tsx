@@ -3,11 +3,11 @@
 import { Products } from "@/lib/types/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Badge } from "../../ui/badge";
+import { Button } from "../../ui/button";
 import { useCartStore } from "@/lib/hooks/useCartStore";
 import { toast } from "sonner";
-import StarRating from "./StarRating";
+import StarRating from "../../StarRating";
 
 interface ProductListItemProps {
   product: Products;
