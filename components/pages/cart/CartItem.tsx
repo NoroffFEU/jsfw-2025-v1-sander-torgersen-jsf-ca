@@ -3,7 +3,7 @@ import {
   type CartItem as CartItemType,
 } from "@/lib/hooks/useCartStore";
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 

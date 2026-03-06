@@ -1,4 +1,4 @@
-import ProductList from "@/components/ProductList";
+import ProductList from "@/components/pages/home/ProductList";
 import { fetchProducts } from "@/lib/services/api";
 import { Products } from "@/lib/types/types";
 

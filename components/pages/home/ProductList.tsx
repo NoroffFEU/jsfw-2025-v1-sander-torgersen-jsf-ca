@@ -2,7 +2,7 @@
 
 import { Products } from "@/lib/types/types";
 import ProductListItem from "./ProductListItem";
-import SearchBar from "./SearchBar";
+import SearchBar from "../../SearchBar";
 import { useMemo, useState } from "react";
 
 interface ProductListProps {

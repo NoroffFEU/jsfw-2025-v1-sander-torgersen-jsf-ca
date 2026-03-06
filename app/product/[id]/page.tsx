@@ -1,4 +1,4 @@
-import ProductDetailsClient from "@/components/ProductDetailsClient";
+import ProductDetailsClient from "@/components/pages/home/details-page/ProductDetailsClient";
 import { fetchProductById } from "@/lib/services/api";
 
 interface ProductPageProps {
