@@ -2,7 +2,10 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 
-export default function CheckoutSuccessPage() {
+export default async function CheckoutSuccessPage() {
+  const timer = new Promise((resolve) => setTimeout(resolve, 1500));
+  await timer;
+
   return (
     <div className="mx-auto max-w-lg px-4 py-16 text-center sm:px-6 lg:px-8">
       <CheckCircle className="mx-auto h-20 w-20 text-green-500" />
