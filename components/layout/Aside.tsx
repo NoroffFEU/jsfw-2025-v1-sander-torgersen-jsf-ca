@@ -2,9 +2,12 @@
 
 import { useSidebarMenu } from "@/lib/hooks/useSidebarMenu";
 import { X } from "lucide-react";
+import { Separator } from "../ui/separator";
+import { useCartStore } from "@/lib/hooks/useCartStore";
 
 export default function CartAside() {
   const { isOpen, close } = useSidebarMenu();
+  const { items } = useCartStore();
 
   return (
     <>
@@ -16,12 +19,28 @@ export default function CartAside() {
 
               <button
                 onClick={close}
-                className="lg:hidden rounded-md p-1 hover:bg-accent"
+                className=" rounded-md p-1 hover:bg-accent"
                 aria-label="Close cart sidebar"
               >
                 <X className="h-5 w-5 cursor-pointer" />
               </button>
             </div>
+
+            <Separator className="my-2" />
+
+            <div>{items.length} items in cart</div>
+
+            <>
+              <div>
+                {items.map((item) => (
+                  <div key={item.product.id}>
+                    <div>
+                      <p>{item.product.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
           </div>
         </aside>
       )}
