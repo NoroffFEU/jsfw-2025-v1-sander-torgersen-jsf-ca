@@ -1,5 +1,5 @@
-import { Spinner } from "@/components/ui/spinner";
+import ContactPageSkeleton from "@/components/pages/contact/ContactPageSkeleton";
 
 export default function ContactLoading() {
-  return <Spinner className="mx-auto h-12 w-12 text-primary" />;
+  return <ContactPageSkeleton />;
 }
