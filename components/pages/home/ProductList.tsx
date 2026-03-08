@@ -3,14 +3,32 @@
 import { Products } from "@/lib/types/types";
 import ProductListItem from "./ProductListItem";
 import SearchBar from "../../SearchBar";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface ProductListProps {
   products: Products[];
 }
 
 export default function ProductList({ products }: ProductListProps) {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathName = usePathname();
+
+  const query = searchParams.get("query") || "";
+
+  const handleQuery = useCallback(
+    (newQuery: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (newQuery.trim()) {
+        params.set("query", newQuery);
+      } else {
+        params.delete("query");
+      }
+      router.replace(`${pathName}?${params.toString()}`);
+    },
+    [router, pathName, searchParams],
+  );
 
   const filteredProducts = useMemo(() => {
     if (!query.trim()) return products;
@@ -31,7 +49,7 @@ export default function ProductList({ products }: ProductListProps) {
           Explore our wide range of products and enjoy shopping with us.
         </p>
         <div className="pt-6">
-          <SearchBar query={query} onChange={setQuery} />
+          <SearchBar query={query} onChange={handleQuery} />
         </div>
       </section>
 

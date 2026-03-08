@@ -57,7 +57,7 @@ export default function ProductDetailsClient({
 
           <StarRating rating={product.rating} />
 
-          <div className="flex items-baseline gap-3">
+          <div className="flex flex-wrap items-baseline gap-3">
             {hasDiscount ? (
               <>
                 <span className="text-3xl font-bold text-red-600">

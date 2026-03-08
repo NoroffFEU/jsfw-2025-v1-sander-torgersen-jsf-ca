@@ -1,6 +1,6 @@
 # Online Shop CA using NextJS - Sander Torgersen
 
-An online store platform where users can browse a veriety products and checkout these items. Can search products and has form made with zod. This project uses modern web technologies that align with each other, focusing on performance and accessibility and user experience.
+An online shop platform where users can browse a veriety products and checkout these items. Can search products and has form made with zod. This project uses modern web technologies that align with each other, focusing on performance and accessibility and user experience.
 
 ## Project links
 
@@ -14,7 +14,7 @@ An online store platform where users can browse a veriety products and checkout 
 
 - **Forms**: Uses Zod, Zod-Resolver and React-Hook-Forms, for validation, propper acceibilities and "useForm" for good managment of state.
 - **Hooks**: Uses Zustand with persist muddleware for localStorage, that manages states and actions.
-- **Browse Listings**: View active auctions with search, filter (by tag), and sort capabilities.
+- **Browse Listings**: View products with dynamic filtering as the user types in search field.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop devices.
 - **Modern UI**: Styled with Tailwind CSS and Shadcn, featuring easy custom fast design and smooth animations.
 
