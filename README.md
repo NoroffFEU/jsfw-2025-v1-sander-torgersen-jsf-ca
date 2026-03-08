@@ -83,6 +83,22 @@ npm run start
 
 The application will be available at `http://localhost:3000`.
 
+## AI LOG
+
+**Usage:**
+I used AI, when I got an error message from NextJS in server development. It gave an error referring to the suspense component,
+
+```bash
+  <Suspense fallback=”Skeleton”>
+    <ProductList products={products}>
+  </Suspense>
+```
+
+I tried to search for it in the NextJS Docs what i found was what i already did as viewed in their docs, [Documentaion for Suspense](https://nextjs.org/docs/app/api-reference/file-conventions/loading#streaming-with-suspense), since the docs was the same as i had done but showed error i asked AI (Claude), It answered that i didn't need it to import “loading.tsx (function)” manually in the suspense fallback and refrain from that. Because NextJS detects the exported function from the “loading.tsx” file and imports it automatically when waiting for the async function.
+
+**Learning Outcomes:**
+In NextJS i dont have to wrap my function from “loading.tsx” inside a suspense manually, NextJS does it automatically meaning i dont have to import the function to “page.tsx”.
+
 ## Author
 
 **[Sander Dorgan Torgersen](https://github.com/SanderTorg)**
